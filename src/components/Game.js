@@ -35,7 +35,10 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <Board squares={current.squares} onClick={i => this.handleSquareClick(i)} />
+          <Board
+            squares={current.squares}
+            onClick={i => this.handleSquareClick(i)}
+          />
         </div>
         <div className="game-info">
           <div>{status}</div>
@@ -46,11 +49,13 @@ class Game extends React.Component {
   }
 
   describeStatus(winner) {
-    return winner ? `Winner: ${winner}` : `Next player: ${this.nextPlayerToken()}`;
+    return winner
+      ? `Winner: ${winner}`
+      : `Next player: ${this.nextPlayerToken()}`;
   }
 
   nextPlayerToken() {
-    return this.state.xIsNext ? 'X' : 'O'
+    return this.state.xIsNext ? 'X' : 'O';
   }
 
   handleSquareClick(i) {
@@ -72,7 +77,7 @@ class Game extends React.Component {
   jumpTo(stepNumber) {
     this.setState({
       stepNumber,
-      xIsNext: (stepNumber % 2) === 0,
+      xIsNext: stepNumber % 2 === 0
     });
   }
 

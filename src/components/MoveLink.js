@@ -6,6 +6,7 @@ const MoveLink = props => {
     <li key={props.move}>
       <button onClick={props.onClick}>{desc}</button>
     </li>
-  );};
+  );
+};
 
 export default MoveLink;
