@@ -64,10 +64,10 @@ class Game extends React.Component {
     });
   }
 
-  jumpTo(step) {
+  jumpTo(stepNumber) {
     this.setState({
-      stepNumber: step,
-      xIsNext: (step % 2) === 0,
+      stepNumber: stepNumber,
+      xIsNext: (stepNumber % 2) === 0,
     });
   }
 
