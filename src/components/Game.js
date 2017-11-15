@@ -1,6 +1,6 @@
 import React from 'react';
 import Board from './Board';
-import MoveLink from './MoveLink';
+import MoveLinks from './MoveLinks';
 
 const lines = [
   [0, 1, 2],
@@ -28,9 +28,6 @@ class Game extends React.Component {
     const current = history[this.state.stepNumber];
     const winner = this.calculateWinner(current.squares);
     const status = this.describeStatus(winner);
-    const moves = history.map((step, move) => {
-      return <MoveLink move={move} onClick={() => this.jumpTo(move)} />;
-    });
 
     return (
       <div className="game">
@@ -42,7 +39,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <MoveLinks history={history} onClick={i => this.jumpTo(i)} />
         </div>
       </div>
     );
@@ -74,13 +71,6 @@ class Game extends React.Component {
     });
   }
 
-  jumpTo(stepNumber) {
-    this.setState({
-      stepNumber,
-      xIsNext: stepNumber % 2 === 0
-    });
-  }
-
   calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
@@ -93,6 +83,13 @@ class Game extends React.Component {
       }
     }
     return null;
+  }
+
+  jumpTo(stepNumber) {
+    this.setState({
+      stepNumber,
+      xIsNext: stepNumber % 2 === 0
+    });
   }
 }
 
