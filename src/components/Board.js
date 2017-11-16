@@ -2,12 +2,10 @@ import React from 'react';
 import Square from './Square';
 
 const Board = props => {
-  const indexedProps = Array(9)
-    .fill()
-    .map((e, i) => ({
-      val: props.squares[i],
-      fn: () => props.onClick(i)
-    }));
+  const indexedProps = props.squares.map((val, i) => ({
+    val,
+    fn: () => props.onClick(i)
+  }));
 
   return (
     <div>
