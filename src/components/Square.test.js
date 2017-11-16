@@ -5,7 +5,7 @@ import Square from './Square';
 
 let div;
 let button;
-let mockHandler = jest.fn();
+const mockHandler = jest.fn();
 
 beforeEach(() => {
   div = document.createElement('div');
