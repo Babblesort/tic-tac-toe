@@ -17,6 +17,21 @@ it('creates initial state in ctor', () => {
   expect(game.state.stepNumber).toBe(0);
 });
 
+it('jumpTo calls effect state.stepNumber and state.xIsNext', () => {
+  game.state.history =[
+    { squares: Array(9).fill(null) },
+    { squares: Array(9).fill(null) },
+    { squares: Array(9).fill(null) }
+  ];
+  game.jumpTo(1);
+  expect(game.state.xIsNext).toBe(false);
+  expect(game.state.stepNumber).toBe(1);
+
+  game.jumpTo(2);
+  expect(game.state.xIsNext).toBe(true);
+  expect(game.state.stepNumber).toBe(2);
+});
+
 it('provides description of game status', () => {
   game.nextPlayerToken = () => 'Z';
   expect(game.describeStatus()).toBe('Next player: Z');
