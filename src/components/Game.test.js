@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactTestUtils from 'react-dom/test-utils';
 import Game from './Game';
 
 let div;
@@ -11,7 +10,6 @@ beforeEach(() => {
 });
 
 it('creates initial state in ctor', () => {
-  expect(game.state).not.toBeFalsy;
   expect(game.state.history).toEqual([{ squares: Array(9).fill(null) }]);
   expect(game.state.xIsNext).toBe(true);
   expect(game.state.stepNumber).toBe(0);
