@@ -2,7 +2,7 @@ import React from 'react';
 import Board from './Board';
 import MoveLinks from './MoveLinks';
 
-const initialSquares = [{ squares: Array(9).fill(null) }]
+const initialSquares = [{ squares: Array(9).fill(null) }];
 const lines = [
   [0, 1, 2],
   [3, 4, 5],
@@ -30,15 +30,20 @@ class Game extends React.Component {
     const winner = this.calculateWinner(current.squares);
     const status = this.describeStatus(winner);
 
-    return <div className="game">
+    return (
+      <div className="game">
         <div className="game-board">
-          <Board squares={current.squares} onClick={i => this.handleSquareClick(i)} />
+          <Board
+            squares={current.squares}
+            onClick={i => this.handleSquareClick(i)}
+          />
         </div>
         <div className="game-info">
           <div>{status}</div>
           <MoveLinks history={history} onClick={i => this.jumpTo(i)} />
         </div>
-      </div>;
+      </div>
+    );
   }
 
   describeStatus(winner) {
