@@ -2,27 +2,29 @@ import React from 'react';
 import Square from './Square';
 
 const Board = props => {
-  const indexes = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  const indexedProps = indexes.map(i => ({
-    value: props.squares[i],
-    handler: () => props.onClick(i)
-  }));
+  const indexedProps = Array(9)
+    .fill()
+    .map((e, i) => ({
+      val: props.squares[i],
+      fn: () => props.onClick(i)
+    }));
+
   return (
     <div>
       <div className="board-row">
-        <Square value={indexedProps[0].value} onClick={indexedProps[0].handler} />
-        <Square value={indexedProps[1].value} onClick={indexedProps[1].handler} />
-        <Square value={indexedProps[2].value} onClick={indexedProps[2].handler} />
+        <Square value={indexedProps[0].val} onClick={indexedProps[0].fn} />
+        <Square value={indexedProps[1].val} onClick={indexedProps[1].fn} />
+        <Square value={indexedProps[2].val} onClick={indexedProps[2].fn} />
       </div>
       <div className="board-row">
-        <Square value={indexedProps[3].value} onClick={indexedProps[3].handler} />
-        <Square value={indexedProps[4].value} onClick={indexedProps[4].handler} />
-        <Square value={indexedProps[5].value} onClick={indexedProps[5].handler} />
+        <Square value={indexedProps[3].val} onClick={indexedProps[3].fn} />
+        <Square value={indexedProps[4].val} onClick={indexedProps[4].fn} />
+        <Square value={indexedProps[5].val} onClick={indexedProps[5].fn} />
       </div>
       <div className="board-row">
-        <Square value={indexedProps[6].value} onClick={indexedProps[6].handler} />
-        <Square value={indexedProps[7].value} onClick={indexedProps[7].handler} />
-        <Square value={indexedProps[8].value} onClick={indexedProps[8].handler} />
+        <Square value={indexedProps[6].val} onClick={indexedProps[6].fn} />
+        <Square value={indexedProps[7].val} onClick={indexedProps[7].fn} />
+        <Square value={indexedProps[8].val} onClick={indexedProps[8].fn} />
       </div>
     </div>
   );
